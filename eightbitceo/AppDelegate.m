@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "Company.h"
 
 @implementation AppDelegate
 
@@ -14,6 +15,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    Company *company = [[Company alloc] initWithName:@"Getchoo Creations"];
     // Override point for customization after application launch.
     return YES;
 }

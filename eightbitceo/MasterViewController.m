@@ -7,8 +7,8 @@
 //
 
 #import "MasterViewController.h"
-
 #import "DetailViewController.h"
+#import "Company.h"
 
 @interface MasterViewController () {
     NSMutableArray *_objects;
@@ -69,9 +69,10 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
-
-    NSDate *object = [_objects objectAtIndex:indexPath.row];
-    cell.textLabel.text = [object description];
+    Company *company = [[Company alloc] initWithName:@"Getchoo Creations"];
+    
+    
+    cell.textLabel.text = company.name;
     return cell;
 }
 
