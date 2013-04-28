@@ -11,7 +11,7 @@
 @interface IncorporationViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UITextField *companyName;
-
-- (IBAction)companyNameChanged:(id)sender;
+@property (weak, nonatomic) IBOutlet UITextField *founderFirstName;
+@property (weak, nonatomic) IBOutlet UITextField *FounderLastName;
 
 @end

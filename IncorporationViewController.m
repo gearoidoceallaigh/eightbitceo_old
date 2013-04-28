@@ -7,6 +7,7 @@
 //
 
 #import "IncorporationViewController.h"
+#import "CompanyDetailsViewController.h"
 
 @interface IncorporationViewController ()
 
@@ -14,6 +15,8 @@
 
 @implementation IncorporationViewController
 @synthesize companyName;
+@synthesize founderFirstName;
+@synthesize FounderLastName;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -33,6 +36,8 @@
 - (void)viewDidUnload
 {
     [self setCompanyName:nil];
+    [self setFounderFirstName:nil];
+    [self setFounderLastName:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
@@ -42,8 +47,17 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-- (IBAction)companyNameChanged:(id)sender {
-    
-    NSLog(@"oh hello there: %@", self.companyName.text);
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{ 
+    [textField resignFirstResponder];
+    return NO;
 }
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    CompanyDetailsViewController *controller = (CompanyDetailsViewController *)segue.destinationViewController;
+    controller.companyName = self.companyName.text;
+    controller.founderFirstName = self.founderFirstName.text;
+    controller.founderLastName = self.FounderLastName.text;
+}
+
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "CompanyDataModel.h"
 #import "Company.h"
 
 @implementation AppDelegate
@@ -15,7 +16,16 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    Company *company = [[Company alloc] initWithName:@"Getchoo Creations"];
+    NSManagedObjectContext *context = [[CompanyDataModel sharedDataModel] mainContext];
+    if (context) {
+        NSLog(@"context is ready");
+        
+        Company *company = [Company insertInManagedObjectContext:context];
+        company.name = @"Kim Bros. Ltd.";
+//        [context save:nil];
+    } else{
+        NSLog(@"Contect is nil: (");
+    }
     // Override point for customization after application launch.
     return YES;
 }
